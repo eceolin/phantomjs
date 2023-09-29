@@ -992,6 +992,8 @@
 #define ENABLE_FULLSCREEN_API 0
 #endif
 
+#define WTF_USE_JSVALUE64 1
+
 #if !defined(WTF_USE_JSVALUE64) && !defined(WTF_USE_JSVALUE32_64)
 #if (CPU(X86_64) && (OS(UNIX) || OS(WINDOWS))) \
     || (CPU(IA64) && !CPU(IA64_32)) \
