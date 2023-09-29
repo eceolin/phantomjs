@@ -7,6 +7,7 @@ include(WebKit.pri)
 webkit2:exists($$PWD/WebKit2/WebKit2.pro): SUBDIRS += WebKit2/WebKit2.pro
 
 SUBDIRS += WebKit/qt/QtWebKit.pro
+QMAKE_CXXFLAGS += -std=gnu++98
 
 webkit2 {
     exists($$PWD/WebKit2/WebProcess.pro): SUBDIRS += WebKit2/WebProcess.pro
