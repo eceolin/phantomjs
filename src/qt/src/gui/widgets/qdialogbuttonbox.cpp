@@ -257,7 +257,7 @@ static const unsigned int layouts[2][5][14] =
         // Mac modeless
         { ActionRole, ApplyRole, ResetRole, Stretch, HelpRole, EOL, EOL, EOL, EOL, EOL, EOL, EOL, EOL, EOL }
     }
-;
+};
 
 #if defined(QT_SOFTKEYS_ENABLED) && !defined(QT_NO_ACTION)
 class QDialogButtonEnabledProxy : public QObject
