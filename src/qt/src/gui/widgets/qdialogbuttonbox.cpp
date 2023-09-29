@@ -212,7 +212,7 @@ static QDialogButtonBox::ButtonRole roleFor(QDialogButtonBox::StandardButton but
     return QDialogButtonBox::InvalidRole;
 }
 
-static const int layouts[2][5][14] =
+static const unsigned int layouts[2][5][14] =
 {
     // Qt::Horizontal
     {
@@ -257,7 +257,7 @@ static const int layouts[2][5][14] =
         // Mac modeless
         { ActionRole, ApplyRole, ResetRole, Stretch, HelpRole, EOL, EOL, EOL, EOL, EOL, EOL, EOL, EOL, EOL }
     }
-};
+;
 
 #if defined(QT_SOFTKEYS_ENABLED) && !defined(QT_NO_ACTION)
 class QDialogButtonEnabledProxy : public QObject
@@ -407,7 +407,7 @@ void QDialogButtonBoxPrivate::layoutButtons()
             tmpPolicy = 4;  // Mac modeless
     }
 
-    const int *currentLayout = layouts[orientation == Qt::Vertical][tmpPolicy];
+    const unsigned int *currentLayout = layouts[orientation == Qt::Vertical][tmpPolicy];
 
     if (center)
         buttonLayout->addStretch();
@@ -415,7 +415,7 @@ void QDialogButtonBoxPrivate::layoutButtons()
     QList<QAbstractButton *> acceptRoleList = buttonLists[AcceptRole];
 
     while (*currentLayout != EOL) {
-        int role = (*currentLayout & ~Reverse);
+        unsigned int role = (*currentLayout & ~Reverse);
         bool reverse = (*currentLayout & Reverse);
 
         switch (role) {
