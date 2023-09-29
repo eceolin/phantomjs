@@ -54,7 +54,7 @@ static int inner_main(int argc, char** argv)
     app.setApplicationVersion(PHANTOMJS_VERSION_STRING);
 
     // Registering an alternative Message Handler
-    qInstallMessageHandler(Utils::messageHandler);
+    qInstallMsgHandler(Utils::messageHandler);
 
 #if defined(Q_OS_LINUX)
     if (QSslSocket::supportsSsl()) {
