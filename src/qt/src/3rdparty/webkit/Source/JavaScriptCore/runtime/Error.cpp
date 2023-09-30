@@ -148,14 +148,12 @@ JSObject* addErrorInfo(ExecState* exec, JSObject* error, int line, const SourceC
     stackString.append(error->toString(exec));
 
     bool functionKnown;
-    if ENABLE(JIT)
-    ReturnAddressPtr pc;
+#if ENABLE(JIT)
     ReturnAddressPtr pc;
 #endif
 #if ENABLE(INTERPRETER)
     Instruction* pc = NULL;
 #endif
-
     while (!frame->hasHostCallFrameFlag()) {
         CodeBlock* codeBlock = frame->codeBlock();
         JSObject* arrayItem = constructEmptyObject(exec);
@@ -209,13 +207,12 @@ JSObject* addErrorInfo(ExecState* exec, JSObject* error, int line, const SourceC
 
         stackArray->push(exec, JSValue(arrayItem));
 
-        #if ENABLE(JIT)
+#if ENABLE(JIT)
         pc = frame->returnPC();
-        pc = frame->returnPC();
-        #endif
-        #if ENABLE(INTERPRETER)
-                pc = frame->returnVPC();
-        #endif
+#endif
+#if ENABLE(INTERPRETER)
+        pc = frame->returnVPC();
+#endif
         frame = frame->callerFrame();
     }
 
